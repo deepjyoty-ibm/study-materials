@@ -1,0 +1,150 @@
+site_name: Technical Study Knowledge Base
+site_description: Personal Markdown-first technical study notes (Azure Function App and more).
+docs_dir: docs
+site_dir: site
+use_directory_urls: true
+
+theme:
+  name: material
+  language: en
+  font: false # Use system fonts only; no online font URLs.
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: light blue
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.sections
+    - navigation.tracking
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - toc.follow
+
+plugins:
+  - search
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.mark
+  - pymdownx.keys
+
+extra_css:
+  - assets/stylesheets/extra.css
+  - assets/stylesheets/print.css
+
+extra_javascript:
+  - assets/javascripts/extra.js
+
+nav:
+  - Home: index.md
+  - Azure:
+      - Azure/index.md
+      - Azure Function App:
+          - Azure/Azure-Function-App/index.md
+          - 01 Basics:
+              - Azure/Azure-Function-App/01-Basics/index.md
+              - Azure Functions Overview: Azure/Azure-Function-App/01-Basics/Azure-Functions-Overview.md
+              - Hosting Plans: Azure/Azure-Function-App/01-Basics/Hosting-Plans.md
+              - Triggers and Bindings: Azure/Azure-Function-App/01-Basics/Triggers-and-Bindings.md
+              - In-Process vs Isolated Worker: Azure/Azure-Function-App/01-Basics/In-Process-vs-Isolated-Worker.md
+              - Project Structure: Azure/Azure-Function-App/01-Basics/Project-Structure.md
+              - Configuration and Environment: Azure/Azure-Function-App/01-Basics/Configuration-and-Environment.md
+              - Local vs Azure Execution: Azure/Azure-Function-App/01-Basics/Local-vs-Azure-Execution.md
+          - 02 Question and Answer:
+              - Azure/Azure-Function-App/02-Question-Answer/index.md
+              - Dependency Injection in Isolated Worker: Azure/Azure-Function-App/02-Question-Answer/Dependency-Injection-in-Isolated-Worker.md
+              - CORS vs API Management: Azure/Azure-Function-App/02-Question-Answer/CORS-vs-API-Management.md
+              - Rate Limiter vs Load Balancer: Azure/Azure-Function-App/02-Question-Answer/Rate-Limiter-vs-Load-Balancer.md
+              - DefaultAzureCredential Local vs Azure: Azure/Azure-Function-App/02-Question-Answer/DefaultAzureCredential-Local-vs-Azure.md
+              - Managed Identity Connection Management: Azure/Azure-Function-App/02-Question-Answer/Managed-Identity-Connection-Management.md
+              - Function Scaling Questions: Azure/Azure-Function-App/02-Question-Answer/Function-Scaling-Questions.md
+          - 03 Architecture Problems:
+              - Azure/Azure-Function-App/03-Architecture-Problems/index.md
+              - AP-001 Downstream API Throttling: Azure/Azure-Function-App/03-Architecture-Problems/AP-001-Downstream-API-Throttling.md
+              - AP-002 Duplicate Message Processing: Azure/Azure-Function-App/03-Architecture-Problems/AP-002-Duplicate-Message-Processing.md
+              - AP-003 Long-Running Operation: Azure/Azure-Function-App/03-Architecture-Problems/AP-003-Long-Running-Operation.md
+              - AP-004 High-Traffic HTTP Function: Azure/Azure-Function-App/03-Architecture-Problems/AP-004-High-Traffic-HTTP-Function.md
+              - AP-005 Secure Secretless Architecture: Azure/Azure-Function-App/03-Architecture-Problems/AP-005-Secure-Secretless-Architecture.md
+          - 04 System Design:
+              - Azure/Azure-Function-App/04-System-Design/index.md
+              - SD-001 Order Processing System: Azure/Azure-Function-App/04-System-Design/SD-001-Order-Processing-System.md
+              - SD-002 Payment Processing System: Azure/Azure-Function-App/04-System-Design/SD-002-Payment-Processing-System.md
+              - SD-003 Notification System: Azure/Azure-Function-App/04-System-Design/SD-003-Notification-System.md
+              - SD-004 File Processing Pipeline: Azure/Azure-Function-App/04-System-Design/SD-004-File-Processing-Pipeline.md
+              - SD-005 High-Volume Event Processing: Azure/Azure-Function-App/04-System-Design/SD-005-High-Volume-Event-Processing.md
+          - 05 Production Scenarios:
+              - Azure/Azure-Function-App/05-Production-Scenarios/index.md
+              - PS-001 Works Locally, Fails in Azure: Azure/Azure-Function-App/05-Production-Scenarios/PS-001-Works-Locally-Fails-in-Azure.md
+              - PS-002 Intermittent Timeouts: Azure/Azure-Function-App/05-Production-Scenarios/PS-002-Intermittent-Timeouts.md
+              - PS-003 Sudden Traffic Spike: Azure/Azure-Function-App/05-Production-Scenarios/PS-003-Sudden-Traffic-Spike.md
+              - PS-004 Service Bus Message Failures: Azure/Azure-Function-App/05-Production-Scenarios/PS-004-Service-Bus-Message-Failures.md
+              - PS-005 Authentication Failure: Azure/Azure-Function-App/05-Production-Scenarios/PS-005-Authentication-Failure.md
+          - 06 Debugging and Troubleshooting:
+              - Azure/Azure-Function-App/06-Debugging-Troubleshooting/index.md
+              - Troubleshooting Checklist: Azure/Azure-Function-App/06-Debugging-Troubleshooting/Troubleshooting-Checklist.md
+              - Authentication Issues: Azure/Azure-Function-App/06-Debugging-Troubleshooting/Authentication-Issues.md
+              - Dependency Injection Issues: Azure/Azure-Function-App/06-Debugging-Troubleshooting/Dependency-Injection-Issues.md
+              - Configuration Issues: Azure/Azure-Function-App/06-Debugging-Troubleshooting/Configuration-Issues.md
+              - Performance Issues: Azure/Azure-Function-App/06-Debugging-Troubleshooting/Performance-Issues.md
+              - Deployment Issues: Azure/Azure-Function-App/06-Debugging-Troubleshooting/Deployment-Issues.md
+          - 07 Interview and Revision:
+              - Azure/Azure-Function-App/07-Interview-Revision/index.md
+              - Basic Questions: Azure/Azure-Function-App/07-Interview-Revision/Basic-Questions.md
+              - Intermediate Questions: Azure/Azure-Function-App/07-Interview-Revision/Intermediate-Questions.md
+              - Advanced Architecture Questions: Azure/Azure-Function-App/07-Interview-Revision/Advanced-Architecture-Questions.md
+              - Rapid Revision: Azure/Azure-Function-App/07-Interview-Revision/Rapid-Revision.md
+          - 08 Quick Reference:
+              - Azure/Azure-Function-App/08-Quick-Reference/index.md
+              - CLI Commands: Azure/Azure-Function-App/08-Quick-Reference/CLI-Commands.md
+              - Configuration Cheatsheet: Azure/Azure-Function-App/08-Quick-Reference/Configuration-Cheatsheet.md
+              - Hosting Plan Comparison: Azure/Azure-Function-App/08-Quick-Reference/Hosting-Plan-Comparison.md
+              - Trigger Selection Guide: Azure/Azure-Function-App/08-Quick-Reference/Trigger-Selection-Guide.md
+              - Decision Matrix: Azure/Azure-Function-App/08-Quick-Reference/Decision-Matrix.md
+          - Assets:
+              - Images: Azure/Azure-Function-App/assets/images/README.md
+              - Diagrams: Azure/Azure-Function-App/assets/diagrams/README.md
+  - DotNet:
+      - DotNet/index.md
+  - System Design:
+      - System-Design/index.md

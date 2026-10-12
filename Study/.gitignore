@@ -1,0 +1,24 @@
+﻿# Generated documentation site
+site/
+
+# Generated PDF output (keep the folder itself)
+pdf/output/*
+!pdf/output/.gitkeep
+
+# Intermediate build files
+pdf/.build/
+
+# Python virtual environments and caches
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Mermaid CLI / Node artefacts
+node_modules/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+*.swp
+*~

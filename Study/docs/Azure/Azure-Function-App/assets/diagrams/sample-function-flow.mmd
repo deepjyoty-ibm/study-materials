@@ -1,0 +1,38 @@
+%% Sample Azure Function App flow
+%% HTTP intake -> Service Bus -> worker function -> downstream API
+%% Shows Managed Identity, Key Vault, retries, dead-letter queue and monitoring.
+
+flowchart TB
+    Client([Client application])
+    APIM[API Management<br/>auth + rate limit]
+
+    subgraph FA[Azure Function App - isolated worker]
+        Intake[HTTP-triggered<br/>Intake function]
+        Worker[Service Bus-triggered<br/>Worker function]
+    end
+
+    MI{{Managed Identity}}
+    KV[(Key Vault)]
+    SB[[Service Bus queue]]
+    DLQ[[Dead-letter queue]]
+    Store[(Idempotency store)]
+    API[Downstream API]
+    AI[Application Insights]
+
+    Client -->|HTTPS| APIM
+    APIM -->|Forward request| Intake
+    Intake -->|Enqueue message| SB
+    Intake -->|202 Accepted| APIM
+    SB -->|Trigger| Worker
+    Worker -->|Check / record key| Store
+    Worker -->|Call with token| API
+    API -.->|429 / 5xx| Worker
+    Worker -.->|Abandon: retry later| SB
+    SB -.->|Max delivery count exceeded| DLQ
+
+    FA -.->|Uses| MI
+    MI -.->|Token for| KV
+    MI -.->|Token for| SB
+
+    Intake -.->|Telemetry| AI
+    Worker -.->|Telemetry| AI

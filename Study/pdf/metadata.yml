@@ -1,0 +1,9 @@
+# Pandoc metadata for PDF builds.
+# Used by scripts/build-pdf.ps1 and scripts/build-pdf.sh via --metadata-file.
+#
+# "pagetitle" sets the HTML <title> without rendering a title block,
+# because pdf/cover.md provides the visual cover page.
+pagetitle: "Technical Study Knowledge Base - Azure Function App"
+author: "<ENTER-AUTHOR-NAME>"
+lang: en-GB
+toc-title: "Contents"

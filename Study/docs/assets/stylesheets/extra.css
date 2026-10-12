@@ -1,0 +1,187 @@
+/* ==========================================================================
+   Technical Study Knowledge Base — site styles
+   System-safe fonts only. No external font URLs.
+   ========================================================================== */
+
+:root {
+  --md-text-font: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --md-code-font: "Cascadia Code", "Cascadia Mono", Consolas, "SF Mono", Menlo, "Liberation Mono", monospace;
+
+  /* Dark, IDE-inspired code palette (used in both light and dark schemes) */
+  --study-code-bg: #1e1e2e;
+  --study-code-fg: #d4d4d4;
+  --study-code-border: #2d2d3f;
+  --study-code-comment: #6a9955;
+  --study-code-keyword: #569cd6;
+  --study-code-string: #ce9178;
+  --study-code-number: #b5cea8;
+  --study-code-type: #4ec9b0;
+  --study-code-function: #dcdcaa;
+  --study-code-variable: #9cdcfe;
+  --study-code-operator: #c586c0;
+
+  --study-heading: #1f3a68;
+  --study-heading-accent: #3b5bdb;
+  --study-table-header: #eef2fb;
+  --study-table-stripe: #f8f9fc;
+  --study-blockquote-bg: #f4f6fb;
+  --study-blockquote-border: #4c6ef5;
+}
+
+[data-md-color-scheme="slate"] {
+  --study-heading: #c5d4f5;
+  --study-heading-accent: #8fa8ff;
+  --study-table-header: #2a2f45;
+  --study-table-stripe: #23273a;
+  --study-blockquote-bg: #22263a;
+  --study-blockquote-border: #748ffc;
+}
+
+body,
+.md-typeset {
+  font-family: var(--md-text-font);
+}
+
+.md-typeset code,
+.md-typeset kbd,
+.md-typeset pre {
+  font-family: var(--md-code-font);
+}
+
+/* ---------- Typography ---------- */
+
+.md-typeset {
+  font-size: 0.8rem;
+  line-height: 1.65;
+}
+
+.md-typeset h1 {
+  color: var(--study-heading);
+  font-weight: 700;
+  border-bottom: 2px solid var(--study-heading-accent);
+  padding-bottom: 0.3em;
+}
+
+.md-typeset h2 {
+  color: var(--study-heading);
+  font-weight: 650;
+  margin-top: 2em;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  padding-bottom: 0.2em;
+}
+
+.md-typeset h3 {
+  color: var(--study-heading-accent);
+  font-weight: 600;
+}
+
+.md-typeset p,
+.md-typeset li {
+  max-width: 52rem;
+}
+
+/* ---------- Code blocks ---------- */
+
+.md-typeset pre > code,
+.md-typeset .highlight pre,
+.md-typeset .highlight code {
+  background-color: var(--study-code-bg);
+  color: var(--study-code-fg);
+}
+
+.md-typeset .highlight,
+.md-typeset pre {
+  border: 1px solid var(--study-code-border);
+  border-radius: 6px;
+}
+
+.md-typeset .highlight span.filename {
+  background-color: #2b2b3c;
+  color: #e0e0e0;
+}
+
+/* Override Material code token colours with the dark palette */
+.md-typeset .highlight {
+  --md-code-bg-color: var(--study-code-bg);
+  --md-code-fg-color: var(--study-code-fg);
+  --md-code-hl-comment-color: var(--study-code-comment);
+  --md-code-hl-keyword-color: var(--study-code-keyword);
+  --md-code-hl-string-color: var(--study-code-string);
+  --md-code-hl-number-color: var(--study-code-number);
+  --md-code-hl-name-color: var(--study-code-variable);
+  --md-code-hl-function-color: var(--study-code-function);
+  --md-code-hl-constant-color: var(--study-code-type);
+  --md-code-hl-special-color: var(--study-code-operator);
+  --md-code-hl-operator-color: var(--study-code-fg);
+  --md-code-hl-punctuation-color: var(--study-code-fg);
+  --md-code-hl-variable-color: var(--study-code-variable);
+  --md-code-hl-generic-color: var(--study-code-fg);
+}
+
+.md-typeset .highlight .hll {
+  background-color: #2f3350;
+}
+
+/* Inline code */
+.md-typeset :not(pre) > code {
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+
+/* ---------- Tables ---------- */
+
+.md-typeset table:not([class]) {
+  font-size: 0.75rem;
+  border-collapse: collapse;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--study-table-header);
+  font-weight: 600;
+}
+
+.md-typeset table:not([class]) tr:nth-child(even) td {
+  background-color: var(--study-table-stripe);
+}
+
+.md-typeset table:not([class]) td,
+.md-typeset table:not([class]) th {
+  padding: 0.55em 0.9em;
+  vertical-align: top;
+}
+
+/* ---------- Blockquotes ---------- */
+
+.md-typeset blockquote {
+  background-color: var(--study-blockquote-bg);
+  border-left: 4px solid var(--study-blockquote-border);
+  color: var(--md-default-fg-color);
+  padding: 0.6em 1em;
+  border-radius: 0 6px 6px 0;
+}
+
+/* ---------- Admonitions ---------- */
+
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 6px;
+  font-size: 0.78rem;
+  box-shadow: none;
+}
+
+/* ---------- Mermaid ---------- */
+
+.md-typeset .mermaid {
+  text-align: center;
+  margin: 1.5em 0;
+}
+
+/* ---------- Note navigation footer (Previous | Index | Next) ---------- */
+
+.md-typeset p.note-nav {
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  padding-top: 0.8em;
+  margin-top: 2em;
+}

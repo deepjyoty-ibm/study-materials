@@ -1,0 +1,96 @@
+/* ==========================================================================
+   Print styles for the MkDocs site (browser "Print to PDF").
+   For the Pandoc-based PDF build, see pdf/pdf-style.css.
+   ========================================================================== */
+
+@page {
+  size: A4;
+  margin: 18mm 16mm 20mm 16mm;
+}
+
+@media print {
+  /* Hide site chrome */
+  .md-header,
+  .md-tabs,
+  .md-sidebar,
+  .md-footer,
+  .md-search,
+  .md-source,
+  .md-top,
+  .md-content__button,
+  .headerlink,
+  .md-clipboard {
+    display: none !important;
+  }
+
+  .md-main__inner,
+  .md-content,
+  .md-content__inner {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  body,
+  .md-typeset {
+    font-size: 10.5pt;
+    line-height: 1.5;
+    color: #111;
+  }
+
+  /* Headings should stay with the content that follows */
+  .md-typeset h1,
+  .md-typeset h2,
+  .md-typeset h3,
+  .md-typeset h4 {
+    break-after: avoid;
+    page-break-after: avoid;
+    break-inside: avoid;
+  }
+
+  .md-typeset h1 {
+    break-before: page;
+  }
+
+  .md-typeset h1:first-of-type {
+    break-before: auto;
+  }
+
+  /* Avoid splitting code, diagrams, tables and callouts */
+  .md-typeset pre,
+  .md-typeset .highlight,
+  .md-typeset .mermaid,
+  .md-typeset blockquote,
+  .md-typeset .admonition,
+  .md-typeset table,
+  .md-typeset figure {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .md-typeset p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Keep dark code blocks when printed */
+  .md-typeset pre,
+  .md-typeset .highlight pre {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-size: 8.5pt;
+  }
+
+  .md-typeset a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  /* Manual page break helper: <div class="page-break"></div> */
+  .page-break {
+    break-after: page;
+    page-break-after: always;
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "files.eol": "\n",
+  "files.encoding": "utf8",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.watcherExclude": {
+    "**/pdf/output/**": true,
+    "**/site/**": true,
+    "**/.venv/**": true,
+    "**/node_modules/**": true
+  },
+  "search.exclude": {
+    "**/pdf/output": true,
+    "**/site": true,
+    "**/.venv": true,
+    "**/node_modules": true
+  },
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    },
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one",
+    "files.trimTrailingWhitespace": false,
+    "editor.unicodeHighlight.ambiguousCharacters": false
+  },
+  "[yaml]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "[jsonc]": {
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "[powershell]": {
+    "files.encoding": "utf8bom"
+  },
+  "markdown.validate.enabled": true,
+  "markdown.validate.referenceLinks.enabled": "warning",
+  "markdown.validate.fragmentLinks.enabled": "warning",
+  "markdown.validate.fileLinks.enabled": "warning",
+  "markdown.validate.fileLinks.markdownFragmentLinks": "warning",
+  "markdown.validate.ignoredLinks": [],
+  "markdown.preview.breaks": false,
+  "markdown.preview.typographer": false,
+  "markdown.extension.toc.levels": "2..3",
+  "markdown.extension.list.indentationSize": "inherit",
+  "markdown.extension.tableFormatter.enabled": true,
+  "markdownlint.config": {
+    "extends": ".markdownlint.json"
+  },
+  "cSpell.language": "en-GB",
+  "cSpell.words": [
+    "APIM",
+    "Azurite",
+    "idempotency",
+    "idempotent",
+    "isolated",
+    "Kusto",
+    "mkdocs",
+    "Pandoc",
+    "Polly",
+    "serverless",
+    "WeasyPrint"
+  ],
+  "cSpell.ignorePaths": [
+    "pdf/output/**",
+    "site/**",
+    ".venv/**",
+    "node_modules/**"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "yzhang.markdown-all-in-one",
+    "davidanson.vscode-markdownlint",
+    "bierner.markdown-mermaid",
+    "bierner.markdown-preview-github-styles",
+    "streetsidesoftware.code-spell-checker",
+    "ms-azuretools.vscode-azurefunctions",
+    "ms-dotnettools.csharp",
+    "redhat.vscode-yaml"
+  ]
+}

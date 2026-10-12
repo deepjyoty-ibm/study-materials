@@ -1,0 +1,343 @@
+/* ==========================================================================
+   PDF stylesheet (A4) for Pandoc HTML → PDF builds.
+   Used with an HTML-based PDF engine such as WeasyPrint or wkhtmltopdf.
+   System-safe fonts only. No external URLs.
+   ========================================================================== */
+
+@page {
+  size: A4;
+  margin: 20mm 18mm 22mm 18mm;
+
+  @bottom-center {
+    content: counter(page) " / " counter(pages);
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: 8.5pt;
+    color: #6b7280;
+  }
+}
+
+@page :first {
+  margin: 0;
+  @bottom-center { content: none; }
+}
+
+:root {
+  --text: #1f2328;
+  --muted: #57606a;
+  --heading: #1f3a68;
+  --accent: #3b5bdb;
+  --border: #d0d7de;
+  --surface: #f6f8fa;
+  --code-bg: #1e1e2e;
+  --code-fg: #d4d4d4;
+}
+
+html {
+  font-family: "Segoe UI", "Helvetica Neue", "Liberation Sans", Arial, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+body {
+  margin: 0;
+}
+
+/* ---------- Cover ---------- */
+
+.cover {
+  height: 297mm;
+  box-sizing: border-box;
+  padding: 70mm 25mm 0 25mm;
+  border-left: 10mm solid var(--heading);
+}
+
+.cover-label {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 9pt;
+  color: var(--muted);
+}
+
+.cover-title {
+  font-size: 30pt;
+  line-height: 1.15;
+  color: var(--heading);
+  border: none;
+  margin: 6mm 0 4mm 0;
+  page-break-before: avoid;
+  break-before: avoid;
+}
+
+.cover-subtitle {
+  font-size: 18pt;
+  color: var(--accent);
+  margin: 0 0 14mm 0;
+}
+
+.cover-meta {
+  font-size: 10pt;
+  color: var(--text);
+  max-width: 130mm;
+}
+
+.cover-note {
+  margin-top: 30mm;
+  font-size: 9pt;
+  color: var(--muted);
+  max-width: 130mm;
+}
+
+/* ---------- Table of contents ---------- */
+
+nav#TOC {
+  page-break-after: always;
+  break-after: page;
+}
+
+nav#TOC ul {
+  list-style: none;
+  padding-left: 1em;
+}
+
+nav#TOC > ul {
+  padding-left: 0;
+}
+
+nav#TOC a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+/* ---------- Headings ---------- */
+
+h1, h2, h3, h4 {
+  color: var(--heading);
+  line-height: 1.25;
+  page-break-after: avoid;
+  break-after: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+h1 {
+  font-size: 20pt;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 2mm;
+  margin-top: 0;
+  page-break-before: always;
+  break-before: page;
+}
+
+/* Title block produced by Pandoc should not force a page break */
+header#title-block-header h1 {
+  page-break-before: avoid;
+  break-before: avoid;
+}
+
+h2 {
+  font-size: 14pt;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1mm;
+  margin-top: 8mm;
+}
+
+h3 {
+  font-size: 11.5pt;
+  color: var(--accent);
+  margin-top: 6mm;
+}
+
+h4 {
+  font-size: 10.5pt;
+}
+
+p, li {
+  orphans: 3;
+  widows: 3;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 6mm 0;
+}
+
+/* ---------- Code ---------- */
+
+code, pre, kbd {
+  font-family: "Cascadia Code", "Cascadia Mono", Consolas, "DejaVu Sans Mono", "Liberation Mono", Menlo, monospace;
+}
+
+:not(pre) > code {
+  font-size: 9pt;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0 0.25em;
+}
+
+pre {
+  background: var(--code-bg);
+  color: var(--code-fg);
+  font-size: 8.3pt;
+  line-height: 1.45;
+  padding: 3.5mm 4mm;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* Allow very long code blocks to split rather than overflow a page */
+pre.long, div.sourceCode.long pre {
+  page-break-inside: auto;
+  break-inside: auto;
+}
+
+div.sourceCode {
+  margin: 3mm 0;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* Pandoc highlight token classes — dark IDE-inspired palette */
+pre code span.kw, pre code span.cf { color: #569cd6; }          /* keyword, control flow */
+pre code span.dt { color: #4ec9b0; }                            /* data type */
+pre code span.st, pre code span.ch, pre code span.vs { color: #ce9178; } /* strings */
+pre code span.dv, pre code span.bn, pre code span.fl { color: #b5cea8; } /* numbers */
+pre code span.co, pre code span.do { color: #6a9955; font-style: italic; } /* comments */
+pre code span.fu { color: #dcdcaa; }                            /* function */
+pre code span.va { color: #9cdcfe; }                            /* variable */
+pre code span.op { color: #d4d4d4; }                            /* operator */
+pre code span.at { color: #9cdcfe; }                            /* attribute */
+pre code span.pp { color: #c586c0; }                            /* preprocessor */
+pre code span.im { color: #c586c0; }                            /* import */
+pre code span.cn { color: #4fc1ff; }                            /* constant */
+pre code span.er, pre code span.al { color: #f44747; }          /* error, alert */
+
+/* Mermaid source fallback (when diagrams are not pre-rendered) */
+pre.mermaid, div.sourceCode.mermaid pre {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px dashed var(--border);
+}
+
+/* ---------- Tables ---------- */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 9pt;
+  margin: 3mm 0;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+thead {
+  display: table-header-group; /* repeat header on page break */
+}
+
+th {
+  background: #eef2fb;
+  color: var(--heading);
+  text-align: left;
+  font-weight: 600;
+}
+
+th, td {
+  border: 1px solid var(--border);
+  padding: 1.6mm 2.2mm;
+  vertical-align: top;
+}
+
+tr:nth-child(even) td {
+  background: #fafbfc;
+}
+
+tr {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* ---------- Blockquotes and admonition-like blocks ---------- */
+
+blockquote {
+  margin: 3mm 0;
+  padding: 2.5mm 4mm;
+  background: #f4f6fb;
+  border-left: 3px solid var(--accent);
+  color: var(--text);
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+blockquote p {
+  margin: 1mm 0;
+}
+
+/* MkDocs "!!! note" admonitions appear as plain paragraphs in Pandoc output.
+   If you convert them to <div class="admonition note"> they are styled here. */
+.admonition {
+  border-left: 3px solid var(--accent);
+  background: var(--surface);
+  padding: 2.5mm 4mm;
+  margin: 3mm 0;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.admonition.warning { border-left-color: #d29922; }
+.admonition.danger  { border-left-color: #cf222e; }
+.admonition.tip     { border-left-color: #1a7f37; }
+
+/* ---------- Images and figures ---------- */
+
+img, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+figure {
+  margin: 4mm 0;
+  text-align: center;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+figcaption {
+  font-size: 8.5pt;
+  color: var(--muted);
+}
+
+/* ---------- Task lists ---------- */
+
+ul.task-list, ul:has(> li > input[type="checkbox"]) {
+  list-style: none;
+  padding-left: 1em;
+}
+
+/* ---------- Page-break helpers ---------- */
+
+.page-break {
+  page-break-after: always;
+  break-after: page;
+}
+
+.keep-together {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* Hide the "Previous · Index · Next" footer line in PDFs (links do not help on paper) */
+p:has(> a[href="index.md"]) {
+  display: none;
+}
